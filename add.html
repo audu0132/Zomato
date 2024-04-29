@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Restaurant</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add Restaurant</h1>
+        <form id="restaurantForm">
+            <label for="name">Restaurant Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="address">Restaurant Address:</label>
+            <input type="text" id="address" name="address" required><br><br>
+            
+            <label for="cuisine">Cuisine Type:</label>
+            <input type="text" id="cuisine" name="cuisine" required><br><br>
+            
+            <button type="submit">Add Restaurant</button>
+        </form>
+    </div>
+
+    <script src="script.js">
+        document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("restaurantForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const address = document.getElementById("address").value;
+        const cuisine = document.getElementById("cuisine").value;
+
+        // Validate form data
+        if (name.trim() === '' || address.trim() === '' || cuisine.trim() === '') {
+            alert("Please fill out all fields");
+            return;
+        }
+
+        // Create restaurant object
+        const restaurant = {
+            name: name,
+            address: address,
+            cuisine: cuisine
+        };
+
+        // Here you can send the restaurant data to your backend or do whatever you want with it
+        console.log("Restaurant added:", restaurant);
+        
+        // Optionally, you can clear the form fields after submission
+        form.reset();
+    });
+});
+
+    </script>
+</body>
+</html>
